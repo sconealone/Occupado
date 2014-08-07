@@ -5,7 +5,6 @@
 var BathroomStatus = require('../models/BathroomStatus');
 
 exports.occupied = function(req, res) {
-	// console.log(req);
   BathroomStatus.findOne({br_id : req.query.bathroom_id}, function(err, br){
   	br.in_use = true;
   	br.start_time = new Date();
