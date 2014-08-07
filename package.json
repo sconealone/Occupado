@@ -45,7 +45,8 @@
     "source-map" : "*",
     "shellwords" : "*",
     "fs-tools" : "*",
-    "pako" : "*"
+    "pako" : "*",
+    "mincer" : "*"
   },
   "devDependencies": {
     "blessed": "^0.0.37",
