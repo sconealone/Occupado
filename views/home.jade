@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1 CoolName 
+  h1 Occupado 
     span.slogan Everybody poops.
   .br-status-container
     div(class="bathroom-status-header") 3rd Floor - 1
@@ -9,7 +9,21 @@ block content
     div(class="bathroom-status-header") 4th Floor - 1
     div(class="bathroom-status-header") 4th Floor - 2 
     br
-    - each o, i in occupied
+    - each o in occupied
       if o
         - var klass = (o.in_use === true ? 'Occupado' : 'Available')
         div(class="bathroom-status #{klass}" id="bathroom_status_#{o.br_id}") #{klass}
+  .br-stats-container
+    - each o in occupied
+      if o
+        div(class="bathroom-stats-box" id="bathroom_average_#{o.br_id}")
+          span.number #{o.average} seconds
+          br
+          span.average Average Time
+  .br-stats-container
+    - each o in occupied
+      if o
+        div(class="bathroom-stats-box" id="bathroom_count_#{o.br_id}")
+          span.number #{o.uses.length}
+          br
+          span.total Total Uses
