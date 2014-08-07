@@ -9,8 +9,9 @@ var bathroomStatusSchema = new mongoose.Schema({
     start_time : Date,
     end_time : Date
   }],
-  ratings : [Number],
-  total_burn : Number
+  total_burn : Number,
+  total_likes : Number,
+  total_dislikes : Number
 });
 
 module.exports = mongoose.model('BathroomStatus', bathroomStatusSchema);

@@ -158,6 +158,21 @@ app.get('/bathroom/occupied', function(req, res){
   bathroomController.occupied(req, res);
 });
 
+app.get('/bathroom/like', function(req, res){
+  for(var id in connections) {
+    connections[id].emit('like', {"bathroom_id" : req.query.bathroom_id});
+  }
+  bathroomController.like(req, res);
+});
+
+
+app.get('/bathroom/dislike', function(req, res){
+  for(var id in connections) {
+    connections[id].emit('dislike', {"bathroom_id" : req.query.bathroom_id});
+  }
+  bathroomController.dislike(req, res);
+});
+
 app.get('/bathroom/unoccupied', function(req, res){
   console.log(connections)
   for(var id in connections) {

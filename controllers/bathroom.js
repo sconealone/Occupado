@@ -29,3 +29,30 @@ exports.unoccupied = function(req, res) {
   });
 	res.status(200).end()
 };
+
+exports.like = function(req, res){
+   BathroomStatus.findOne({br_id : req.query.bathroom_id}, function(err, br){
+    if(br.total_likes != null){
+      br.total_likes += 1;
+    }
+    else{
+      br.total_likes = 1;
+    }
+    br.save()
+  });
+  res.status(200).end()
+}
+
+exports.dislike = function(req, res){
+   BathroomStatus.findOne({br_id : req.query.bathroom_id}, function(err, br){
+    if(br.total_dislikes != null){
+      br.total_dislikes += 1;
+    }
+    else{
+      br.total_dislikes = 1;
+    }
+    br.save()
+  });
+  res.status(200).end()
+
+}

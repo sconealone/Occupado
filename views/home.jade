@@ -34,3 +34,15 @@ block content
           span.number $#{o.total_burn}
           br
           span.total Total Spent
+  .br-stats-container
+    - each o in occupied
+      if o
+        - var percent_up = Math.round((o.total_likes/(o.total_likes + o.total_dislikes))*100);
+        - var percent_down = Math.round((o.total_dislikes/(o.total_likes + o.total_dislikes))*100);
+          .rate-container
+            div(class="ratebox" onclick="dislike(#{o.br_id})")
+              i.fa.fa-thumbs-o-down.fa-4x.fa-flip-horizontal
+              span(class="rating" id="bathroom_#{o.br_id}_dislikes" value="#{o.total_dislikes}") #{percent_down}%
+            div(class="ratebox" onclick="like(#{o.br_id})")
+              i.fa.fa-thumbs-o-up.fa-4x
+              span(class="rating" id="bathroom_#{o.br_id}_likes" value="#{o.total_likes}") #{percent_up}%
