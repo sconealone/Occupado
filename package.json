@@ -43,7 +43,8 @@
     "mimoza" : "*",
     "hike" : "*",
     "source-map" : "*",
-    "shellwords" : "*"
+    "shellwords" : "*",
+    "fs-tools" : "*"
   },
   "devDependencies": {
     "blessed": "^0.0.37",
