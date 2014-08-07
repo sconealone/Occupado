@@ -44,7 +44,8 @@
     "hike" : "*",
     "source-map" : "*",
     "shellwords" : "*",
-    "fs-tools" : "*"
+    "fs-tools" : "*",
+    "pako" : "*"
   },
   "devDependencies": {
     "blessed": "^0.0.37",
