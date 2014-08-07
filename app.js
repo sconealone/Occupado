@@ -62,7 +62,7 @@ var week = day * 7;
  * CSRF whitelist.
  */
 
-var csrfExclude = ['/url1', '/url2'];
+var csrfExclude = ['/bathroom/occupied', '/bathroom/unoccupied'];
 
 /**
  * Express configuration.
