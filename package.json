@@ -40,7 +40,8 @@
     "socket.io": "^1.0.6",
     "uglify-js": "^2.4.14",
     "validator": "^3.16.1",
-    "mimoza" : "*"
+    "mimoza" : "*",
+    "hike" : "*"
   },
   "devDependencies": {
     "blessed": "^0.0.37",
