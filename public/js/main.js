@@ -62,9 +62,9 @@ $(document).ready(function() {
     else{
         var current_dislikes = parseInt($("#bathroom_" + data["bathroom_id"] + "_dislikes").attr("value"));
     }
+    current_dislikes += 1
     var sum = (current_likes+current_dislikes);
     if (sum == 0) sum = 1;
-    current_dislikes += 1
     $("#bathroom_" + data["bathroom_id"] + "_dislikes").attr("value", (current_dislikes))
     $("#bathroom_" + data["bathroom_id"] + "_dislikes").text(Math.round((current_dislikes/(sum))*100) + "%")
     $("#bathroom_" + data["bathroom_id"] + "_likes").text(Math.round((current_likes/(sum))*100) + "%")
