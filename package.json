@@ -41,7 +41,8 @@
     "uglify-js": "^2.4.14",
     "validator": "^3.16.1",
     "mimoza" : "*",
-    "hike" : "*"
+    "hike" : "*",
+    "shellwords" : "*"
   },
   "devDependencies": {
     "blessed": "^0.0.37",
