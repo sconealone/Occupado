@@ -5,12 +5,12 @@ var bathroomStatusSchema = new mongoose.Schema({
   in_use : Boolean,
   start_time : Date, //Of use
   average : Number,
-  count: Number,
   uses : [{
     start_time : Date,
     end_time : Date
   }],
-  ratings : [Number]
+  ratings : [Number],
+  total_burn : Number
 });
 
 module.exports = mongoose.model('BathroomStatus', bathroomStatusSchema);

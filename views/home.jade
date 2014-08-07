@@ -27,3 +27,10 @@ block content
           span.number #{o.uses.length}
           br
           span.total Total Uses
+  .br-stats-container
+    - each o in occupied
+      if o
+        div(class="bathroom-stats-box gold" id="bathroom_burn_#{o.br_id}")
+          span.number $#{o.total_burn}
+          br
+          span.total Total Spent
