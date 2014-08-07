@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 CoolName 
+    span.slogan Everybody poops.
+  .br-status-container
+    div(class="bathroom-status-header") 3rd Floor - 1
+    div(class="bathroom-status-header") 3rd Floor - 2
+    div(class="bathroom-status-header") 4th Floor - 1
+    div(class="bathroom-status-header") 4th Floor - 2 
+    br
+    - each o, i in occupied
+      if o
+        - var klass = (o.in_use === true ? 'Occupado' : 'Available')
+        div(class="bathroom-status #{klass}" id="bathroom_status_#{o.br_id}") #{klass}
