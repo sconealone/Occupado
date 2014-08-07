@@ -1,9 +1,9 @@
 {
-  "name": "ata-hackathon",
-  "version": "1",
+  "name": "hackathon-starter",
+  "version": "2.3.2",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/sahat/hackathon-starter.git"
   },
   "scripts": {
     "start": "node app.js",
