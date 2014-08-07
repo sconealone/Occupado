@@ -23,7 +23,7 @@ exports.unoccupied = function(req, res) {
     for(var i = 0; i < br.uses.length; i++){
       summ += Math.round((br.uses[i].end_time - br.uses[i].start_time)/1000);
     }
-    br.average = summ/br.uses.length;
+    br.average = Math.round(summ/br.uses.length);
   	br.save()
   });
 	res.status(200).end()
