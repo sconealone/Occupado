@@ -16,7 +16,11 @@ block content
     - each o in occupied
       if o
         - var klass = (o.in_use === true ? 'Occupado' : 'Available')
-        div(class="bathroom-status #{klass}" id="bathroom_status_#{o.br_id}") #{klass}
+        if o.br_id == 1 || o.br_id == 2
+          div(class="bathroom-status incommunicado" id="bathroom_status_#{o.br_id}") Incommunicado 
+            i.fa.fa-frown-o
+        else
+          div(class="bathroom-status #{klass}" id="bathroom_status_#{o.br_id}") #{klass}
   .br-pic-container
     img(class="br-pic" src="/images/photo1.JPG")
     img(class="br-pic" src="/images/photo2.JPG")
