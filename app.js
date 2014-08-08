@@ -163,12 +163,10 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
 * Bathroom uses
 */
 app.get('/bathroom/occupied', function(req, res){
-  bathroomController.occupied(req, res, function(br){
-    for(var id in connections) {
-      connections[id].emit('occupied', {"bathroom_id" : req.query.bathroom_id, "count" : br.uses.length, "average": br.average, "burn" : br.total_burn});
-    }
-    res.status(200).end();
-  });
+  for(var id in connections) {
+    connections[id].emit('occupied', {"bathroom_id" : req.query.bathroom_id});
+  }
+  bathroomController.occupied(req, res);
 });
 
 app.get('/bathroom/like', function(req, res){
@@ -187,14 +185,11 @@ app.get('/bathroom/dislike', function(req, res){
 });
 
 app.get('/bathroom/unoccupied', function(req, res){
-  bathroomController.occupied(req, res, function(br){
-    for(var id in connections) {
-      connections[id].emit('unoccupied', {"bathroom_id" : req.query.bathroom_id, "count" : br.uses.length, "average": br.average, "burn" : br.total_burn});
-    }
-
-    res.status(200).end();
-  });
-
+  console.log(connections)
+  for(var id in connections) {
+    connections[id].emit('unoccupied', {"bathroom_id" : req.query.bathroom_id});
+  }
+  bathroomController.unoccupied(req, res);
 })
 
 

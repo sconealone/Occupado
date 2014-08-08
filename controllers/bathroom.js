@@ -4,17 +4,17 @@
  */
 var BathroomStatus = require('../models/BathroomStatus');
 
-exports.occupied = function(req, res, callback) {
+exports.occupied = function(req, res) {
   BathroomStatus.findOne({br_id : req.query.bathroom_id}, function(err, br){
     console.log(br);
   	br.in_use = true;
   	br.start_time = new Date();
   	br.save()
-    callback(br);
   });
+	res.status(200).end()
 };
 
-exports.unoccupied = function(req, res, callback) {
+exports.unoccupied = function(req, res) {
   BathroomStatus.findOne({br_id : req.query.bathroom_id}, function(err, br){
     console.log(br);
   	br.in_use = false;
@@ -26,11 +26,9 @@ exports.unoccupied = function(req, res, callback) {
     br.average = Math.round(summ/br.uses.length);
     br.total_burn = Math.round(summ*0.00961527777) //estimated
     br.start_time = new Date();
-  	br.save(function(err){
-      console.log("Error!: " + err)
-    })
-    callback(br);
+  	br.save()
   });
+	res.status(200).end()
 };
 
 exports.like = function(req, res){
