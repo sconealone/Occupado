@@ -1,3 +1,20 @@
+<h4>Occupado</h4>
+<h1>everybody poops</h1>
+
+Occupado is a system developed for the A Thinking Ape Summer 2014 Co-op Hackathon.
+It uses magnetic door sensors to determine which bathrooms are occupied (i.e. which have their doors closed).
+Occupado was developed for an office with two floors, each with two bathrooms. A Raspberry Pi on each floor
+reads the door sensors and communicates changes in door status to the sever. The server displays which bathroom
+doors are closed, as well as some statistics about bathroom usage.
+
+Developed By
+Peter Henderson
+Gord Larson
+Kimberly Shen
+Mitchell Tee
+
+=======================
+
 ![Alt](https://lh4.googleusercontent.com/-PVw-ZUM9vV8/UuWeH51os0I/AAAAAAAAD6M/0Ikg7viJftQ/w1286-h566-no/hackathon-starter-logo.jpg)
 Hackathon Starter [![Dependency Status](https://david-dm.org/sahat/hackathon-starter.svg)](https://david-dm.org/sahat/hackathon-starter) [![Build Status](https://travis-ci.org/sahat/hackathon-starter.svg?branch=master)](https://travis-ci.org/sahat/hackathon-starter) [![Analytics](https://ga-beacon.appspot.com/UA-47447818-2/hackathon-starter?pixel)](https://github.com/igrigorik/ga-beacon)
 =======================
