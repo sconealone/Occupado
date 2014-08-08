@@ -17,6 +17,9 @@ $(document).ready(function() {
   	console.log(data)
   	$("#bathroom_status_" + data["bathroom_id"]).removeClass("Occupado");
   	$("#bathroom_status_" + data["bathroom_id"]).text("Available");
+    $("#bathroom_average_" + data["bathroom_id"]).children(".number").text(data["average"])
+    $("#bathroom_count_" + data["bathroom_id"]).children(".number").text(data["count"])
+    $("#bathroom_burn_" + data["bathroom_id"]).children(".number").text("$" + data["burn"])
   });
 
   socket.on('viewer', function(data){

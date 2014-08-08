@@ -22,8 +22,7 @@ exports.index = function(req, res, viewers) {
   				  br_id : bathroom_ids[i], 
 				  in_use : false,
 				  start_time : new Date(), 
-				  number_of_uses : 0,
-				  average_time : 0,
+				  average : 0,
 				  uses : []
 	  			}).save()
   		}
@@ -32,7 +31,7 @@ exports.index = function(req, res, viewers) {
     day_usage_data = new Array(4)
 
     occupied.forEach(function(occ){ 
-      if(occ=== null || typeof(occ) === "") return;
+      if(occ=== null || typeof(occ) === "undefined") return;
 
       time_usage_data[occ.br_id-1] = Array.apply(null, new Array(24)).map(Number.prototype.valueOf,0);
       day_usage_data[occ.br_id-1] = Array.apply(null, new Array(7)).map(Number.prototype.valueOf,0);
