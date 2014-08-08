@@ -28,11 +28,32 @@ exports.index = function(req, res, viewers) {
 	  			}).save()
   		}
   	}
+    time_usage_data = new Array(4)
+    day_usage_data = new Array(4)
+
+    occupied.forEach(function(occ){ 
+      if(occ=== null || typeof(occ) === "") return;
+
+      time_usage_data[occ.br_id-1] = Array.apply(null, new Array(24)).map(Number.prototype.valueOf,0);
+      day_usage_data[occ.br_id-1] = Array.apply(null, new Array(7)).map(Number.prototype.valueOf,0);
+
+      occ.uses.forEach(function(use){
+        time_usage_data[occ.br_id-1][use.start_time.getHours()] += 1
+        day_usage_data[occ.br_id-1][use.start_time.getDay()] += 1
+      })
+    })
+
+
+
+    //Aggregate bathroom usage data over days of the week
+
 
   	  res.render('home', {
 	    title: 'Home',
       viewers : viewers,
-	    occupied : occupied
+	    occupied : occupied,
+      time_usage_data : time_usage_data,
+      day_usage_data : day_usage_data
 	  });
   })
 

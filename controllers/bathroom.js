@@ -25,6 +25,7 @@ exports.unoccupied = function(req, res) {
     }
     br.average = Math.round(summ/br.uses.length);
     br.total_burn = Math.round(summ*0.00961527777) //estimated
+    br.start_time = new Date();
   	br.save()
   });
 	res.status(200).end()

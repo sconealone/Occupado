@@ -48,3 +48,12 @@ block content
             div(class="ratebox" onclick="like(#{o.br_id})")
               i.fa.fa-thumbs-o-up.fa-4x
               span(class="rating" id="bathroom_#{o.br_id}_likes" value="#{o.total_likes}") #{percent_up}%
+  .charts-container
+    h2 Usage over time of day
+    canvas(id="myChart" width="750" height="250")
+  .charts-container
+    h2 Usage over weekday
+    canvas(id="myChart2" width="750" height="250")
+  script(type="text/javascript")
+      | var time_usage_data = !{JSON.stringify(time_usage_data)}
+      | var day_usage_data = !{JSON.stringify(day_usage_data)}
