@@ -124,7 +124,7 @@ $(document).ready(function() {
   // Get the context of the canvas element we want to select
   ctx = document.getElementById("myChart2").getContext("2d");
   data = {
-      labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
       datasets: [
           {
               label: "3rd Floor (1) ",
