@@ -1,7 +1,9 @@
 extends layout
 
 block content
-  h1 Occupado 
+  h1
+    img(src="/images/toilet.png" class="logo") 
+    span Occupado 
     span.slogan Everybody poops.
     span.viewer-count
       #{viewers}  people watching
@@ -15,6 +17,27 @@ block content
       if o
         - var klass = (o.in_use === true ? 'Occupado' : 'Available')
         div(class="bathroom-status #{klass}" id="bathroom_status_#{o.br_id}") #{klass}
+  .br-pic-container
+    img(class="br-pic" src="/images/photo1.JPG")
+    img(class="br-pic" src="/images/photo2.JPG")
+    img(class="br-pic" src="/images/photo3.JPG")
+    img(class="br-pic" src="/images/photo4.JPG")
+  .br-stats-container
+    - each o in occupied
+      if o
+        - var percent_up = Math.round((o.total_likes/(o.total_likes + o.total_dislikes))*100);
+        - var percent_down = Math.round((o.total_dislikes/(o.total_likes + o.total_dislikes))*100);
+          .rate-container
+            div(class="ratebox" onclick="dislike(#{o.br_id})")
+              i.fa.fa-thumbs-o-down.fa-4x.fa-flip-horizontal
+              span(class="rating" id="bathroom_#{o.br_id}_dislikes" value="#{o.total_dislikes}") #{percent_down}%
+            div(class="ratebox" onclick="like(#{o.br_id})")
+              i.fa.fa-thumbs-o-up.fa-4x
+              span(class="rating" id="bathroom_#{o.br_id}_likes" value="#{o.total_likes}") #{percent_up}%
+  h2
+    span Stats 
+    img(src="/images/without.png" class="stats-logo") 
+    span.slogan Invading your privacy in novel ways.
   .br-stats-container
     - each o in occupied
       if o
@@ -36,18 +59,6 @@ block content
           span.number $#{o.total_burn}
           br
           span.total Total Spent
-  .br-stats-container
-    - each o in occupied
-      if o
-        - var percent_up = Math.round((o.total_likes/(o.total_likes + o.total_dislikes))*100);
-        - var percent_down = Math.round((o.total_dislikes/(o.total_likes + o.total_dislikes))*100);
-          .rate-container
-            div(class="ratebox" onclick="dislike(#{o.br_id})")
-              i.fa.fa-thumbs-o-down.fa-4x.fa-flip-horizontal
-              span(class="rating" id="bathroom_#{o.br_id}_dislikes" value="#{o.total_dislikes}") #{percent_down}%
-            div(class="ratebox" onclick="like(#{o.br_id})")
-              i.fa.fa-thumbs-o-up.fa-4x
-              span(class="rating" id="bathroom_#{o.br_id}_likes" value="#{o.total_likes}") #{percent_up}%
   .charts-container
     h2 Usage over time of day
     canvas(id="myChart" width="750" height="250")
