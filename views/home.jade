@@ -35,9 +35,8 @@ block content
               i.fa.fa-thumbs-o-up.fa-4x
               span(class="rating" id="bathroom_#{o.br_id}_likes" value="#{o.total_likes}") #{percent_up}%
   h2
-    span Stats 
-    img(src="/images/without.png" class="stats-logo") 
-    span.slogan Invading your privacy in novel ways.
+    img(src="/images/ape_on_stats.png" class="stats-logo") 
+    span.slogan.stats-slogan Invading your privacy in novel ways.
   .br-stats-container
     - each o in occupied
       if o

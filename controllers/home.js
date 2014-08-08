@@ -38,7 +38,7 @@ exports.index = function(req, res, viewers) {
       day_usage_data[occ.br_id-1] = Array.apply(null, new Array(7)).map(Number.prototype.valueOf,0);
 
       occ.uses.forEach(function(use){
-        time_usage_data[occ.br_id-1][use.end_time.getHours()] += 1
+        time_usage_data[occ.br_id-1][convertToPSTHours(use.end_time)] += 1
         day_usage_data[occ.br_id-1][use.end_time.getDay()] += 1
       })
     })
@@ -58,3 +58,13 @@ exports.index = function(req, res, viewers) {
   })
 
 };
+
+
+function convertToPSTHours(time){
+  var hours = time.getHours();
+  var pst = hours - 8;
+  if(pst < 0){
+    pst = 24 + pst;
+  }
+  return pst;
+}
