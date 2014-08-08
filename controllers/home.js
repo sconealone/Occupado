@@ -38,8 +38,8 @@ exports.index = function(req, res, viewers) {
       day_usage_data[occ.br_id-1] = Array.apply(null, new Array(7)).map(Number.prototype.valueOf,0);
 
       occ.uses.forEach(function(use){
-        time_usage_data[occ.br_id-1][use.start_time.getHours()] += 1
-        day_usage_data[occ.br_id-1][use.start_time.getDay()] += 1
+        time_usage_data[occ.br_id-1][use.end_time.getHours()] += 1
+        day_usage_data[occ.br_id-1][use.end_time.getDay()] += 1
       })
     })
 
