@@ -4,7 +4,7 @@
  */
 var BathroomStatus = require('../models/BathroomStatus');
 
-exports.index = function(req, res) {
+exports.index = function(req, res, viewers) {
   BathroomStatus.find({}, function(err, br_statuses){
   	var bathroom_ids = [1, 2, 3, 4]
   	var occupied = new Array(4)
@@ -31,6 +31,7 @@ exports.index = function(req, res) {
 
   	  res.render('home', {
 	    title: 'Home',
+      viewers : viewers,
 	    occupied : occupied
 	  });
   })

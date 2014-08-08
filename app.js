@@ -119,7 +119,19 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: week }));
  * Main routes.
  */
 
-app.get('/', homeController.index);
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
+connections = {}
+
+app.get('/', function(req, res){
+  homeController.index(req, res, Object.size(connections))
+});
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
@@ -146,7 +158,6 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
   res.redirect(req.session.returnTo || '/');
 });
 
-connections = {}
 
 /**
 * Bathroom uses
@@ -204,11 +215,17 @@ io.sockets.on('connection', function(socket) {
   connections[socket.id] = socket
 
   socket.emit('greet', { hello: 'Hey, Mr.Client!' });
+  for(var id in connections) {
+    connections[id].emit('viewer', { viewers: Object.size(connections)})
+  }
   socket.on('respond', function(data) {
     console.log(data);
   });
   socket.on('disconnect', function() {
     delete connections[socket.id];
+    for(var id in connections) {
+      connections[id].emit('viewer', { viewers: Object.size(connections)})
+    }
     console.log('Socket disconnected');
   });
 });

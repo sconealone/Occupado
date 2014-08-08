@@ -25,6 +25,10 @@ $(document).ready(function() {
     $("#bathroom_status_" + data["bathroom_id"]).text("Available");
   });
 
+  socket.on('viewer', function(data){
+    $(".viewer-count").first().text(data["viewers"] + " people watching");
+  });
+
   socket.on('like', function(data){
     console.log(data)
     if($("#bathroom_" + data["bathroom_id"] + "_likes").attr("value") == "NaN"){
